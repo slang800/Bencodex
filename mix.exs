@@ -8,7 +8,14 @@ defmodule Bencodex.Mixfile do
       elixir: "~> 1.0",
       description: "Encoder and decoder for the bencode format",
       package: package(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -19,7 +26,8 @@ defmodule Bencodex.Mixfile do
   defp deps do
     [
       {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.6", only: :dev}
+      {:ex_doc, "~> 0.6", only: :dev},
+      {:excoveralls, "~> 0.6", only: :test}
     ]
   end
 
