@@ -29,6 +29,11 @@ defmodule BencodexTest do
     assert Map.get(map, 2) == "hello"
   end
 
+  test "decoding a dictionary with nested dictionaries" do
+    map = Bencodex.decode("d1:ad1:bi42eee")
+    assert map == %{"a" => %{"b" => 42}}
+  end
+
   test "encoding an integer" do
     assert Bencodex.encode(555) == "i555e"
   end
